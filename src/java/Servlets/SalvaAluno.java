@@ -9,6 +9,7 @@ import controler.Conecta_Banco;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,41 +28,40 @@ public class SalvaAluno extends HttpServlet {
 
     Conecta_Banco conexao = new Conecta_Banco();
     Connection resp;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");        
-        
-        String nome, usuario, senha, achaUsuario;
-        achaUsuario = "nenhum";
+        response.setContentType("text/html;charset=UTF-8");
+
+        String nome, usuario, senha, mensagem;        
         nome = request.getParameter("txtNome");
         usuario = request.getParameter("txtUsuario");
-        senha = request.getParameter("txtsenha");
+        senha = request.getParameter("txtSenha");
+        
+        
         try {
             resp = conexao.conectaPostgre("academia");
-            if(resp != null){
-                conexao.ExecutaSql("select * from usuario where nome='"+nome+"'");
-                conexao.resultset.first();
-                achaUsuario = conexao.resultset.getString("nome");
-                       
+            if (resp != null) {
+                conexao.ExecutaSql("select * from usuario where nome='" + nome + "'");
+
+                if (!conexao.resultset.first()) {
+                    PreparedStatement pst = resp.prepareStatement("insert into usuario (nome, login, senha) values (?, ?, ?)");
+                    pst.setString(1, nome);
+                    pst.setString(2, usuario);
+                    pst.setString(3, senha);
+                    pst.execute();                                        
+                    response.sendRedirect("gerenciaAluno.jsp");
+                } else {    
+                    
+                    
+                }
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(SalvaAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         
-        
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SalvaAluno</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Nome:" + nome + " usu:" + usuario + " senha:" + senha + " acha usuuu:" +achaUsuario+"</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

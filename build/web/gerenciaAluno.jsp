@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="css/estilo.css">
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib tagdir="/WEB-INF/tags/" prefix="tagsTest"%>
 <title>B&S</title>
 <div id="todo">
     <c:import url="cabeçalho.jsp"/>
@@ -15,7 +16,8 @@
      <form id="formAluno" action="./SalvaAluno">
          <h3>Nome</h3> <input type="text" name="txtNome" value="" id="txtNome"/>
         <h3>Usuario</h3> <input type="text" name="txtUsuario" value="" id="txtUsuario"/>
-        <h3>Senha</h3> <input type="text" name="txtSenha" value="" id="txtSenha"/>
+        <h3>Senha</h3> <input type="text" name="txtSenha" value="" id="txtSenha"/><br>  
+        <%-- <tagsTest:mensagemLogin/>--%>
         <input type="submit" name="btnGravar" value="Gravar"/>
         <input type="submit" name="btnEditar" value="Editar"/>
         <input type="submit" name="btnExcluir" value="Excluir"/>
