@@ -25,51 +25,51 @@
         </div>
 
         <div class="row">
-            <form>
+            <form action="./SalvaAluno">
 
                 <div class="form-group">
                     <label for="nome_completo">Digite seu nome completo:</label>
-                    <input type="text" class="form-control" name="txtNome" required>
+                    <input type="text" class="form-control" name="txtNome" id="txtNome" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="nome_completo">Usuário:</label>
-                    <input type="text" class="form-control" name="txtUsuario" required>
+                    <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="nome_completo">Senha:</label>
-                    <input type="text" class="form-control" name="txtSenha" required>
+                    <input type="text" class="form-control" name="txtSenha" id="txtSenha" required>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Informe seu e-mail:</label>
-                    <input type="email" class="form-control" name="txtEmail" required>
+                    <input type="email" class="form-control" name="txtEmail" id="txtEmail" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="nome_completo">Endereço:</label>
-                    <input type="text" class="form-control" name="txtEndereco" required>
+                    <input type="text" class="form-control" name="txtEndereco" id="txtEndereco" required>
                 </div>
 
                 <div class="form-group">
                     <label for="idade">Informe sua idade:</label>
-                    <input type="number" class="form-control" name="intIdade" min="10" max="110" required>
+                    <input type="number" class="form-control" name="intIdade" id="intIdade" min="10" max="110" required>
                 </div>                
                
                 <div class="form-group">
                     <label for="nome_completo">Peso:</label>
-                    <input type="text" class="form-control" name="doublePeso" required>
+                    <input type="text" class="form-control" name="doublePeso" id="doublePeso" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="nome_completo">Altura:</label>
-                    <input type="text" class="form-control" name="doubleAltura" required>
+                    <input type="text" class="form-control" name="doubleAltura" id="doubleAltura" required>
                 </div>
 
                 <div class="form-group">
                     <label for="data_pgto">Data de Nascimento:</label>
-                    <input type="date" class="form-control" name="dateNascimento"  required>
+                    <input type="date" class="form-control" name="dateNascimento" id="dateNascimento" required>
                 </div>
 
                 <div class="form-group">

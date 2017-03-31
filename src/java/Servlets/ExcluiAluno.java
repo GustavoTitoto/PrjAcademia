@@ -23,56 +23,45 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author User
  */
-@WebServlet(name = "SalvaAluno", urlPatterns = {"/SalvaAluno"})
-public class SalvaAluno extends HttpServlet {
+@WebServlet(name = "ExcluiAluno", urlPatterns = {"/ExcluiAluno"})
+public class ExcluiAluno extends HttpServlet {
 
     Conecta_Banco conexao = new Conecta_Banco();
     Connection resp;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+        /*String id_aluno = request.getParameter("txt")*/
+        if (!id.equals("")) {
+            try {
+                resp = conexao.conectaPostgre("academia");
+                if (resp != null) {
 
-        String nome, usuario, senha, mensagem;
-        nome = request.getParameter("txtNome");
-        usuario = request.getParameter("txtUsuario");
-        senha = request.getParameter("txtSenha");
-
-        try {
-            resp = conexao.conectaPostgre("academia");
-            if (resp != null) {
-                conexao.ExecutaSql("select * from usuario where nome='" + nome + "'");
-
-                if (!conexao.resultset.first()) {
-                    PreparedStatement pst = resp.prepareStatement("insert into usuario (nome, login, senha) values (?, ?, ?)");
-                    pst.setString(1, nome);
-                    pst.setString(2, usuario);
-                    pst.setString(3, senha);
+                    PreparedStatement pst = resp.prepareStatement("delete from aluno where id_aluno=?)");
+                    pst.setString(1, id);
                     pst.execute();
                     response.sendRedirect("gerenciaAluno.jsp");
                     /*aviso de sucesso de cadastro*/
-                } else {
-                    /*aviso de falha de cadastro*/
-
                 }
-
+            } catch (SQLException ex) {
+                Logger.getLogger(SalvaAluno.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(SalvaAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+}
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+/**
+ * Handles the HTTP <code>GET</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -86,7 +75,7 @@ public class SalvaAluno extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -97,7 +86,7 @@ public class SalvaAluno extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
