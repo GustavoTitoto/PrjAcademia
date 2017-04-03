@@ -81,13 +81,7 @@
                 <div class="form-group" align="center">
                     <button type="submit" class="btn btn-lg btn-success"> 
                         <span class="glyphicon glyphicon-ok" aria-hidden="true" value="Gravar"></span> Gravar
-                    </button>
-                    <button type="submit" class="btn btn-lg btn-success"> 
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true" value="Editar"></span> Editar
-                    </button>
-                    <button type="submit" class="btn btn-lg btn-success"> 
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true" value="Excluir"></span> Excluir
-                    </button>
+                    </button>                    
                 </div>
 
             </form>

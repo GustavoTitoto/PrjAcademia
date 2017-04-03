@@ -39,9 +39,9 @@ public class ExcluiAluno extends HttpServlet {
                 if (resp != null) {
 
                     PreparedStatement pst = resp.prepareStatement("delete from aluno where id_aluno=?)");
-                    pst.setString(1, id);
+                    pst.setInt(1, Integer.parseInt(id));
                     pst.execute();
-                    response.sendRedirect("gerenciaAluno.jsp");
+                    response.sendRedirect("mostraAluno.jsp");
                     /*aviso de sucesso de cadastro*/
                 }
             } catch (SQLException ex) {
