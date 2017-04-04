@@ -5,6 +5,9 @@
  */
 package Servlets;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+import dao.AlunoDao;
+import model.Aluno;
 import controler.Conecta_Banco;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,11 +36,22 @@ public class SalvaAluno extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String nome, usuario, senha, mensagem;
+        String nome, usuario, senha,email,endereco,sexo, mensagem;
+        int idade;
+        double peso,altura;
+        
+        
         nome = request.getParameter("txtNome");
         usuario = request.getParameter("txtUsuario");
         senha = request.getParameter("txtSenha");
-
+        email = request.getParameter("txtEmail");
+        endereco = request.getParameter("txtEndereco");
+        idade = request.getParameter("intIdade");
+        peso = request.getParameter("doublePeso");
+        altura = request.getParameter("doubleAltura");        
+        sexo = request.getParameter("txtGenero");
+                       
+                
         try {
             resp = conexao.conectaPostgre("academia");
             if (resp != null) {
@@ -45,9 +59,18 @@ public class SalvaAluno extends HttpServlet {
 
                 if (!conexao.resultset.first()) {
                     PreparedStatement pst = resp.prepareStatement("insert into usuario (nome, login, senha) values (?, ?, ?)");
+                       
                     pst.setString(1, nome);
                     pst.setString(2, usuario);
                     pst.setString(3, senha);
+                    pst.setString(4, email);
+                    pst.setString(5, endereco);
+                    pst.setString(6, idade);
+                    pst.setString(7, peso);
+                    pst.setString(8, altura);
+                    pst.setString(9, dataDeNascimento);
+                    pst.setString(10, sexo);
+                    
                     pst.execute();
                     response.sendRedirect("gerenciaAluno.jsp");
                     /*aviso de sucesso de cadastro*/

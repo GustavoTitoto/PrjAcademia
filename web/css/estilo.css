@@ -7,6 +7,7 @@ and open the template in the editor.
     margin: 0px;
     padding: 0px;
 }
+img {width: 100%;}
 #todo{
     width:1200px;
     margin: auto;
@@ -66,8 +67,7 @@ and open the template in the editor.
 }
 
 /**********Formulario******/
-#formAluno{}
-#formAluno h3{}
+#formAluno{ margin-bottom: 150px;}
 #formLogin{margin-top: 60px;}
 .campo{padding: 4px; margin: 2px;}
 #btn {
