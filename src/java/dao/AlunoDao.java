@@ -5,11 +5,12 @@
  */
 package dao;
 
-import controler.Conecta_Banco;
+import factory.ConnectionFactory;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,11 +26,29 @@ import model.Aluno;
  * @author User
  */
 public class AlunoDao {
-        Conecta_Banco conexao = new Conecta_Banco();
 
-    Aluno getAluno(String usuario, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private Connection connection;
+
+    public AlunoDao() {
+        this.connection = new ConnectionFactory().getConnection();
     }
-        
-        
+
+    public boolean verificaUsuario(Aluno aluno) {
+        String sql = "select * from aluno where usuario_aluno=? and senha_aluno=?";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);             
+            ps.setString(1, aluno.getUsuario());
+            ps.setString(2, aluno.getSenha());
+            ResultSet rs = ps.executeQuery();
+            System.out.println(aluno.getUsuario());
+            System.out.println(aluno.getSenha());
+            if (rs.next()) {
+                return true;
+            }
+        } catch (SQLException ex) {            
+            Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }

@@ -12,7 +12,7 @@
         
     </c:when>
     <c:otherwise>
-        Mensagem de erro!!
+        Entre com o Usuário e Senha.
     </c:otherwise>
     
 </c:choose>

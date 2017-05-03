@@ -1,0 +1,19 @@
+SMAP
+mensagemLogin_tag.java
+JSP
+*S JSP
+*F
++ 0 mensagemLogin.tag
+WEB-INF/tags/mensagemLogin.tag
+*L
+5,5:63
+9:89,7
+10:96
+10:122,8
+11:130,3
+12,2:133
+13,2:99
+14:152,7
+15,2:159
+16,3:103
+*E

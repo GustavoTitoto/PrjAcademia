@@ -19,7 +19,7 @@
                 <li><a href="mostraTreino.jsp">Gerenciar Treino</a></li>
                 <li><a href="gerenciaAluno.jsp">TESTE</a></li>
             </ul>
-            <a id="logout" href="fksnsfak.jsp">Logout</a>
+            <a id="logout" href="Sair">Logout</a>
             
         </div>
     </body>

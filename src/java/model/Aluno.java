@@ -19,7 +19,10 @@ public class Aluno {
         private String endereco;
         private double peso;
         private double altura;
+        private Integer nivel;
 
+   
+        
    
     public String getNome() {
         return nome;
@@ -62,5 +65,11 @@ public class Aluno {
     }
     public void setAltura(double altura) {
         this.altura = altura;
-    }          
+    }   
+    public Integer getNivel() {
+        return nivel;
+    }
+    public void setNivel(Integer nivel) {
+        this.nivel = nivel;
+    }
 }
