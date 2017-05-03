@@ -19,7 +19,7 @@
         <c:set var="contador" value="${0}"></c:set>
             <table>
                 <tr>
-                    <td>Nome</td><td>Usuario</td><td>Email</td><td>Endereço</td><td>Peso</td><td>Altura</td><td>Nivel</td>            
+                    <td>Nome</td><td>Usuario</td><td>Email</td><td>Endereço</td><td>Peso</td><td>Altura</td><td>Nivel</td><td colspan="2">Opções</td>            
                 </tr>
 
             <c:forEach var="registroAluno" items="${sessaoListaAluno}">
@@ -30,10 +30,12 @@
                     <td>${registroAluno['endereco']}</td>
                     <td>${registroAluno['peso']}</td>
                     <td>${registroAluno['altura']}</td>
-                    <td>${registroAluno['nivel']}</td>              
+                    <td>${registroAluno['nivel']}</td>
+                    <td><a href="AlterarAluno?aluno=${registroAluno['nome']}"><img src="imagens/36966.png" alt="" id="icone"/></a></td>                
+                    <td><a href="ExcluirAluno?aluno=${registroAluno['nome']}"><img src="imagens/61848.png" alt="" id="icone"/></a></td>
                 </tr>           
             </c:forEach>
-            <tr><td colspan="7">Listando ${contador} regisros de Alunos </td></tr>
+            <tr><td colspan="9">Listando ${contador} regisros de Alunos </td></tr>
         </table>
     </div>
     <c:import url="footer.jsp"/>

@@ -99,15 +99,14 @@ public class AlunoDao {
             while (rs.next()) {                
                 //Pegando Dados do Aluno
                 Aluno aluno = new Aluno();
-                
+                //lembrar de implementar o get usuário para funfar as outras medidas
                 aluno.setNome(rs.getString("nome_aluno"));
                 aluno.setUsuario(rs.getString("usuario_aluno"));
                 //aluno.setEndereco(rs.getString("enedereco_aluno"));
                 //aluno.setEmail(rs.getString("email_aluno"));
                 //aluno.setAltura(rs.getDouble("altura_aluno"));
                 //aluno.setIdade(rs.getInt("idade_aluno"));
-                //aluno.setPeso(rs.getDouble("peso_aluno"));
-                System.out.println("TESTANDO ONDE APARECE");
+                //aluno.setPeso(rs.getDouble("peso_aluno"));                
                 listaAluno.add(aluno);                                
             }
             return listaAluno;
@@ -121,4 +120,22 @@ public class AlunoDao {
         }
         return null;
     }
+    
+    //exclui aluno por enquanto deixa no nome mas dps tem uqe mudar para codigo ou login
+    public boolean excluiAluno(Aluno aluno) throws SQLException{
+        String sql = "delete from aluno where nome_aluno=?";
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, aluno.getNome());            
+            ps.execute();
+            return true;            
+        } catch (SQLException ex) {
+            Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
+            ps.close();           
+        }        
+        return false;        
+    }   
 }

@@ -8,6 +8,10 @@
         <servlet-name>ListaAluno</servlet-name>
         <servlet-class>Servlets.ListaAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ExcluirAluno</servlet-name>
+        <servlet-class>Servlets.ExcluirAluno</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogar</servlet-name>
         <url-pattern>/ServletLogar</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>ListaAluno</servlet-name>
         <url-pattern>/ListaAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirAluno</servlet-name>
+        <url-pattern>/ExcluirAluno</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
