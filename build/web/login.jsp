@@ -24,8 +24,8 @@
             <td><input type="password" name="senha" id="senha" autocomplete="on" required="true" placeholder="Senha"></td>            
         </tr>
         <tr>            
-            <td><input type="reset" name="Limpar"></td>
-            <td><input type="submit" name="Acessar"></td>            
+            <td><input type="reset" name="Limpar" id="btnLimpar"></td>
+            <td><input type="submit" name="Acessar" id="btnEntrar"></td>            
         </tr>
         <tr>
             <td colspan="2"> <tag:mensagemLogin/> </td>                       

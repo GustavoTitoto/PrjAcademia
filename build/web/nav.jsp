@@ -14,7 +14,7 @@
         <div id="nav">
             <ul>
                 <li><a href="exibeTreinoAluno.jsp">Treino</a></li>
-                <li><a href="mostraAluno.jsp">Gerenciar Aluno</a></li>
+                <li><a href="ListaAluno">Gerenciar Aluno</a></li>
                 <li><a href="mostraProfessor.jsp">Gerenciar Professor</a></li>
                 <li><a href="mostraTreino.jsp">Gerenciar Treino</a></li>
                 <li><a href="gerenciaAluno.jsp">TESTE</a></li>

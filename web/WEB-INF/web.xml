@@ -4,9 +4,17 @@
         <servlet-name>ServletLogar</servlet-name>
         <servlet-class>Servlets.ServletLogar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListaAluno</servlet-name>
+        <servlet-class>Servlets.ListaAluno</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogar</servlet-name>
         <url-pattern>/ServletLogar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaAluno</servlet-name>
+        <url-pattern>/ListaAluno</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

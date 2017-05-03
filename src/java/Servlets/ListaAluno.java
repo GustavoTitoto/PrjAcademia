@@ -9,23 +9,20 @@ import dao.AlunoDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Aluno;
 
 /**
  *
  * @author User
  */
-@WebServlet(name = "ServletLogar", urlPatterns = {"/ServletLogar"})
-public class ServletLogar extends HttpServlet {
+public class ListaAluno extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,29 +34,20 @@ public class ServletLogar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-        String usuario = request.getParameter("usuario");
-        String senha = request.getParameter("senha");        
-
+            throws ServletException, IOException {       
         AlunoDao alunoDao = new AlunoDao();
-
-        Aluno aluno = alunoDao.getUsuario(usuario, senha);
-        aluno.setUsuario(usuario);
-        aluno.setSenha(senha);
-        RequestDispatcher rd = null;
-
-        if (aluno != null) {
-            HttpSession sessao = request.getSession();
-            sessao.setAttribute("sessaoUsuario", usuario);
-            rd = request.getRequestDispatcher("/index.jsp");
+        try {
+            List listaAluno = alunoDao.getListaAluno();
+            request.setAttribute("sessaoListaAluno", listaAluno);
+            RequestDispatcher rd = request.getRequestDispatcher("/mostraAluno.jsp");
             rd.forward(request, response);
-        } else {
-            request.setAttribute("mensagem", "Usuário/Senha Inválido");
-            rd = request.getRequestDispatcher("/login.jsp");            
-            rd.forward(request, response);            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ListaAluno.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -74,11 +62,7 @@ public class ServletLogar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletLogar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -92,11 +76,7 @@ public class ServletLogar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ServletLogar.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

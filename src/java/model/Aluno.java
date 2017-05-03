@@ -16,6 +16,7 @@ public class Aluno {
         private String usuario;
         private String senha;
         private String email;
+        private Integer idade;
         private String endereco;
         private double peso;
         private double altura;
@@ -71,5 +72,19 @@ public class Aluno {
     }
     public void setNivel(Integer nivel) {
         this.nivel = nivel;
+    }
+
+    /**
+     * @return the idade
+     */
+    public Integer getIdade() {
+        return idade;
+    }
+
+    /**
+     * @param idade the idade to set
+     */
+    public void setIdade(Integer idade) {
+        this.idade = idade;
     }
 }
