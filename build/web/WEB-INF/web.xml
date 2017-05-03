@@ -12,6 +12,10 @@
         <servlet-name>ExcluirAluno</servlet-name>
         <servlet-class>Servlets.ExcluirAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlterarAluno</servlet-name>
+        <servlet-class>Servlets.AlterarAluno</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogar</servlet-name>
         <url-pattern>/ServletLogar</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ExcluirAluno</servlet-name>
         <url-pattern>/ExcluirAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarAluno</servlet-name>
+        <url-pattern>/AlterarAluno</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

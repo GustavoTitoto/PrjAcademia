@@ -5,12 +5,11 @@
 --%>
 
 <%@taglib tagdir="/WEB-INF/tags" prefix="tag"%>
-
-
+<tag:verificaSessao/>
 <title>B&S</title>
 <link rel="stylesheet" href="css/estilo.css">
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<tag:verificaSessao/>
+
 
 <div id="todo">
     <c:import url="cabeçalho.jsp"/> 

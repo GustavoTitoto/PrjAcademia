@@ -5,25 +5,18 @@
  */
 package Servlets;
 
-import dao.AlunoDao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Aluno;
 
 /**
  *
  * @author User
  */
-public class ExcluirAluno extends HttpServlet {
+public class AlterarAluno extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,25 +28,12 @@ public class ExcluirAluno extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String nome = request.getParameter("nome");
         
-        Aluno aluno = new Aluno();
-        aluno.setNome(nome);
-        AlunoDao alunoDao = new AlunoDao();
-        System.out.println(nome);
         
-        RequestDispatcher rd = null;
-
-        if (alunoDao.excluiAluno(aluno)){
-        rd = request.getRequestDispatcher("/ListaAluno");
-        rd.forward(request, response);
-        }else{
-        rd = request.getRequestDispatcher("/fracasso.jsp");
-        rd.forward(request, response);
-        }
-
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -68,11 +48,7 @@ public class ExcluirAluno extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -86,11 +62,7 @@ public class ExcluirAluno extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(ExcluirAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**

@@ -8,6 +8,9 @@
 <%@page import="java.util.List"%>
 <%@page import="java.sql.Connection"%>
 
+
+<%@taglib tagdir="/WEB-INF/tags" prefix="tag"%>
+<tag:verificaSessao/>
 <link rel="stylesheet" href="css/estilo.css">
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <title>B&S</title>
@@ -15,7 +18,7 @@
     <c:import url="cabeçalho.jsp"/>
     <c:import url="nav.jsp"/>
     <div id="conteudo">
-        <h1>Lista de Usuários</h1>
+        <h1>Lista de Alunos</h1>
         <c:set var="contador" value="${0}"></c:set>
             <table>
                 <tr>
@@ -31,8 +34,8 @@
                     <td>${registroAluno['peso']}</td>
                     <td>${registroAluno['altura']}</td>
                     <td>${registroAluno['nivel']}</td>
-                    <td><a href="AlterarAluno?aluno=${registroAluno['nome']}"><img src="imagens/36966.png" alt="" id="icone"/></a></td>                
-                    <td><a href="ExcluirAluno?aluno=${registroAluno['nome']}"><img src="imagens/61848.png" alt="" id="icone"/></a></td>
+                    <td><a href="AlterarAluno?nome=${registroAluno['nome']}$usuario=${registroAluno['usuario']}"><img src="imagens/36966.png" alt="" id="icone"/></a></td>                
+                    <td><a href="ExcluirAluno?nome=${registroAluno['nome']}"><img src="imagens/61848.png" alt="" id="icone"/></a></td>
                 </tr>           
             </c:forEach>
             <tr><td colspan="9">Listando ${contador} regisros de Alunos </td></tr>

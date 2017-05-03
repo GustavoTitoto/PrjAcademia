@@ -138,4 +138,21 @@ public class AlunoDao {
         }        
         return false;        
     }   
+    //implementar todos os outros dados
+    public void AlteraAluno(Aluno aluno) throws SQLException{
+        String sql = "update aluno SET nome_aluno=?,usuario_aluno=? where nome_aluno=?";
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, aluno.getNome());
+            ps.setString(2, aluno.getUsuario());
+            ps.execute();                        
+        } catch (SQLException ex) {
+            Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            connection.close();
+            ps.close();           
+        }       
+               
+    }   
 }
