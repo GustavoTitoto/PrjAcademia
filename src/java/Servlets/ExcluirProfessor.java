@@ -5,7 +5,7 @@
  */
 package Servlets;
 
-import dao.AlunoDao;
+import dao.ProfessorDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -16,13 +16,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Aluno;
+import model.Professor;
 
 /**
  *
  * @author User
  */
-public class AlterarAluno extends HttpServlet {
+public class ExcluirProfessor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,33 +36,22 @@ public class AlterarAluno extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        String nome = request.getParameter("nome");
-        String usuario = request.getParameter("usuario");
-        String senha = request.getParameter("senha");
-        String email = request.getParameter("email");
-        String endereco = request.getParameter("endereco");
-        String idade = request.getParameter("idade");
-        String peso = request.getParameter("peso");
-        String altura = request.getParameter("altura");
-        String nivel = request.getParameter("nivel");
+       String nome = request.getParameter("nome");
         
-        Aluno aluno = new Aluno();
-        aluno.setNome(nome);
-        aluno.setUsuario(usuario);
-        aluno.setSenha(senha);
-        aluno.setEmail(email);
-        aluno.setEndereco(endereco);
-        aluno.setIdade(Integer.parseInt(idade));
-        aluno.setPeso(Double.parseDouble(peso));
-        aluno.setAltura(Double.parseDouble(altura));
-        aluno.setNivel(Integer.parseInt(nivel));
+        Professor professor = new Professor();
+        professor.setNome(nome);
+        ProfessorDao professorDao = new ProfessorDao();
+        System.out.println(nome);
         
-        AlunoDao alunoDao = new AlunoDao();
-        alunoDao.AlteraAluno(aluno);
-        RequestDispatcher rd = request.getRequestDispatcher("/ListaAluno");
+        RequestDispatcher rd = null;
+
+        if (professorDao.excluiProfessor(professor)){
+        rd = request.getRequestDispatcher("/ListaProfessor");
         rd.forward(request, response);
-        
-        
+        }else{
+        rd = request.getRequestDispatcher("/fracasso.jsp");
+        rd.forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -80,7 +69,7 @@ public class AlterarAluno extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AlterarAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExcluirProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -98,7 +87,7 @@ public class AlterarAluno extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AlterarAluno.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExcluirProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

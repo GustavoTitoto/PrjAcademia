@@ -16,6 +16,30 @@
         <servlet-name>AlterarAluno</servlet-name>
         <servlet-class>Servlets.AlterarAluno</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AlterarProfessor</servlet-name>
+        <servlet-class>Servlets.AlterarProfessor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirProfessor</servlet-name>
+        <servlet-class>Servlets.ExcluirProfessor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListaProfessor</servlet-name>
+        <servlet-class>Servlets.ListaProfessor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AlterarTreino</servlet-name>
+        <servlet-class>Servlets.AlterarTreino</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListarTreino</servlet-name>
+        <servlet-class>Servlets.ListaTreino</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirTreino</servlet-name>
+        <servlet-class>Servlets.ExcluirTreino</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServletLogar</servlet-name>
         <url-pattern>/ServletLogar</url-pattern>
@@ -31,6 +55,30 @@
     <servlet-mapping>
         <servlet-name>AlterarAluno</servlet-name>
         <url-pattern>/AlterarAluno</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarProfessor</servlet-name>
+        <url-pattern>/AlterarProfessor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirProfessor</servlet-name>
+        <url-pattern>/ExcluirProfessor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListaProfessor</servlet-name>
+        <url-pattern>/ListaProfessor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AlterarTreino</servlet-name>
+        <url-pattern>/AlterarTreino</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListarTreino</servlet-name>
+        <url-pattern>/ListarTreino</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirTreino</servlet-name>
+        <url-pattern>/ExcluirTreino</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

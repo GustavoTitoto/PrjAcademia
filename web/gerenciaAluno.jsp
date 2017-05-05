@@ -20,57 +20,59 @@
     <c:import url="nav.jsp"/>
     <div class="container">
         <div class="row">
-            <h1> Cadastre-se</h1>
+            <h1>Formulário de Alunos</h1>
             <hr>
         </div>
 
         <div class="row" id="formAluno">
-            <form action="./SalvaAluno">
+            <form method="get" action="AlterarAluno">
 
                 <div class="form-group">
                     <label for="nome_completo">Digite seu nome completo:</label>
-                    <input type="text" class="form-control" name="txtNome" id="txtNome" required>
+                    <input type="text" class="form-control" name="txtNome" id="txtNome" required value="${param.nome}"> 
+                    
                 </div>
 
                 <div class="form-group">
-                    <label for="nome_completo">Usuário:</label>
-                    <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" required>
+                    <label for="usuario_aluno">Usuário:</label>
+                    <input type="text" class="form-control" name="txtUsuario" id="txtUsuario" required value="${param.usuario}">
                 </div>
 
                 <div class="form-group">
-                    <label for="nome_completo">Senha:</label>
-                    <input type="text" class="form-control" name="txtSenha" id="txtSenha" required>
+                    <label for="senha_aluno">Senha:</label>
+                    <input type="text" class="form-control" name="txtSenha" id="txtSenha" required value="${param.senha}">
                 </div>
 
                 <div class="form-group">
                     <label for="email">Informe seu e-mail:</label>
-                    <input type="email" class="form-control" name="txtEmail" id="txtEmail" required>
+                    <input type="email" class="form-control" name="txtEmail" id="txtEmail" required value="${param.email}">
                 </div>
 
                 <div class="form-group">
-                    <label for="nome_completo">Endereço:</label>
-                    <input type="text" class="form-control" name="txtEndereco" id="txtEndereco" required>
+                    <label for="endereco_aluno">Endereço:</label>
+                    <input type="text" class="form-control" name="txtEndereco" id="txtEndereco" required value="${param.endereco}">
                 </div>
 
                 <div class="form-group">
                     <label for="idade">Informe sua idade:</label>
-                    <input type="number" class="form-control" name="intIdade" id="intIdade" min="10" max="110" required>
+                    <input type="number" class="form-control" name="intIdade" id="intIdade" min="10" max="110" required value="${param.idade}">
                 </div>                
 
                 <div class="form-group">
                     <label for="nome_completo">Peso:</label>
-                    <input type="text" class="form-control" name="doublePeso" id="doublePeso" required>
+                    <input type="text" class="form-control" name="doublePeso" id="doublePeso" required value="${param.peso}">
                 </div>
 
                 <div class="form-group">
                     <label for="nome_completo">Altura:</label>
-                    <input type="text" class="form-control" name="doubleAltura" id="doubleAltura" required>
+                    <input type="text" class="form-control" name="doubleAltura" id="doubleAltura" required value="${param.altura}">
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="data_pgto">Data de Nascimento:</label>
-                    <input type="date" class="form-control" name="dateNascimento" id="dateNascimento" required>
+                    <label for="nivel">Nivel:</label>
+                    <input type="text" class="form-control" name="intNivel" id="intNivel" required value="${param.nivel}">
                 </div>
+                
 
                 <div class="form-group">
                     <label for="genero">Informe seu género sexual:</label><br/>

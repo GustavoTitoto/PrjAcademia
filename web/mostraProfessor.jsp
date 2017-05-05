@@ -10,7 +10,27 @@
     <c:import url="cabeçalho.jsp"/>
     <c:import url="nav.jsp"/>
     <div id="conteudo">
-    <h1>Local onde vai possuir adicionar,remover,alterar aluno e um grid com os professores</h1>
+        <h1>Lista de Professores</h1>
+        <%-- contador n está funcionando--%>
+        <c:set var="contador" value="${0}"></c:set>
+            <table>
+                <tr>
+                    <td>Nome</td><td>Usuario</td><td>Email</td><td>Endereço</td><td>Nivel</td><td colspan="2">Opções</td>            
+                </tr>
+
+            <c:forEach var="registroProfessor" items="${sessaoListaProfessor}">
+                <tr>
+                    <td>${registroProfessor['nome']}</td>
+                    <td>${registroProfessor['usuario']}</td>
+                    <td>${registroProfessor['email']}</td>
+                    <td>${registroProfessor['endereco']}</td>                                        
+                    <td>${registroProfessor['nivel']}</td>
+                    <td><a href="AlterarProfessor?nome=${registroProfessor['nome']}$usuario=${registroProfessor['usuario']}"><img src="imagens/36966.png" alt="" id="icone"/></a></td>                
+                    <td><a href="ExcluirProfessor?nome=${registroProfessor['nome']}"><img src="imagens/61848.png" alt="" id="icone"/></a></td>
+                </tr>           
+            </c:forEach>                
+            <tr><td colspan="7">Listando ${contador} registros de Professores </td></tr>
+        </table>
     </div>
     <c:import url="footer.jsp"/>
 </div>

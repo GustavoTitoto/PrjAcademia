@@ -88,6 +88,8 @@ public class AlunoDao {
         return null;
     }
 
+    
+    
     public List getListaAluno() throws SQLException {
         String sql = "select * from aluno";        
         PreparedStatement ps = null;
@@ -99,14 +101,17 @@ public class AlunoDao {
             while (rs.next()) {                
                 //Pegando Dados do Aluno
                 Aluno aluno = new Aluno();
-                //lembrar de implementar o get usuário para funfar as outras medidas
+                //lembrar que tem que ser na ordem do banco de dados
                 aluno.setNome(rs.getString("nome_aluno"));
                 aluno.setUsuario(rs.getString("usuario_aluno"));
-                //aluno.setEndereco(rs.getString("enedereco_aluno"));
-                //aluno.setEmail(rs.getString("email_aluno"));
-                //aluno.setAltura(rs.getDouble("altura_aluno"));
-                //aluno.setIdade(rs.getInt("idade_aluno"));
-                //aluno.setPeso(rs.getDouble("peso_aluno"));                
+                aluno.setSenha(rs.getString("senha_aluno"));
+                aluno.setEmail(rs.getString("email_aluno"));
+                aluno.setEndereco(rs.getString("endereco_aluno"));
+                aluno.setPeso(rs.getDouble("peso_aluno"));                
+                aluno.setAltura(rs.getDouble("altura_aluno"));
+                aluno.setIdade(rs.getInt("idade_aluno"));
+                aluno.setNivel(rs.getInt("nivel_aluno"));
+                                
                 listaAluno.add(aluno);                                
             }
             return listaAluno;
@@ -140,12 +145,19 @@ public class AlunoDao {
     }   
     //implementar todos os outros dados
     public void AlteraAluno(Aluno aluno) throws SQLException{
-        String sql = "update aluno SET nome_aluno=?,usuario_aluno=? where nome_aluno=?";
+        String sql = "update aluno SET nome_aluno=?,usuario_aluno=?,senha_aluno=?,email_aluno=?,endereco_aluno=?,idade_aluno=?,peso_aluno=?,altura_aluno=? where nome_aluno=?";
         PreparedStatement ps = null;
         try {
             ps = connection.prepareStatement(sql);
             ps.setString(1, aluno.getNome());
             ps.setString(2, aluno.getUsuario());
+            ps.setString(3, aluno.getSenha());
+            ps.setString(4, aluno.getEmail());
+            ps.setString(5, aluno.getEndereco());
+            ps.setInt(6, aluno.getIdade());
+            ps.setDouble(7, aluno.getPeso());
+            ps.setDouble(8, aluno.getAltura());
+            
             ps.execute();                        
         } catch (SQLException ex) {
             Logger.getLogger(AlunoDao.class.getName()).log(Level.SEVERE, null, ex);

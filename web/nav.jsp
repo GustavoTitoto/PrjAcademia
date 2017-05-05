@@ -15,9 +15,8 @@
             <ul>
                 <li><a href="exibeTreinoAluno.jsp">Treino</a></li>
                 <li><a href="ListaAluno">Gerenciar Aluno</a></li>
-                <li><a href="mostraProfessor.jsp">Gerenciar Professor</a></li>
-                <li><a href="mostraTreino.jsp">Gerenciar Treino</a></li>
-                <li><a href="gerenciaAluno.jsp">TESTE</a></li>
+                <li><a href="ListaProfessor">Gerenciar Professor</a></li>
+                <li><a href="ListaTreino">Gerenciar Treino</a></li>                
             </ul>
             <a id="logout" href="Sair">Logout</a>
             

@@ -5,24 +5,18 @@
  */
 package Servlets;
 
-import dao.AlunoDao;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Aluno;
 
 /**
  *
  * @author User
  */
-public class AlterarAluno extends HttpServlet {
+public class AlterarProfessor extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,35 +28,20 @@ public class AlterarAluno extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String nome = request.getParameter("nome");
-        String usuario = request.getParameter("usuario");
-        String senha = request.getParameter("senha");
-        String email = request.getParameter("email");
-        String endereco = request.getParameter("endereco");
-        String idade = request.getParameter("idade");
-        String peso = request.getParameter("peso");
-        String altura = request.getParameter("altura");
-        String nivel = request.getParameter("nivel");
-        
-        Aluno aluno = new Aluno();
-        aluno.setNome(nome);
-        aluno.setUsuario(usuario);
-        aluno.setSenha(senha);
-        aluno.setEmail(email);
-        aluno.setEndereco(endereco);
-        aluno.setIdade(Integer.parseInt(idade));
-        aluno.setPeso(Double.parseDouble(peso));
-        aluno.setAltura(Double.parseDouble(altura));
-        aluno.setNivel(Integer.parseInt(nivel));
-        
-        AlunoDao alunoDao = new AlunoDao();
-        alunoDao.AlteraAluno(aluno);
-        RequestDispatcher rd = request.getRequestDispatcher("/ListaAluno");
-        rd.forward(request, response);
-        
-        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet AlterarProfessor</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet AlterarProfessor at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -77,11 +56,7 @@ public class AlterarAluno extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(AlterarAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -95,11 +70,7 @@ public class AlterarAluno extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(AlterarAluno.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        processRequest(request, response);
     }
 
     /**
